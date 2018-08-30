@@ -127,11 +127,11 @@ public class AddressBook {
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
 
     private static final String COMMAND_SORT_WORD = "sort";
-    private static final String COMMAND_SORT_DESC = "Show the address book sorted by the First Letter";
+    private static final String COMMAND_SORT_DESC = "Show the address book sorted by the First Letter.";
     private static final String COMMAND_SORT_EXAMPLE = COMMAND_SORT_WORD;
 
     private static final String COMMAND_HISTORY_WORD = "history";
-    private static final String COMMAND_HISTORY_DESC = "Show the the history of commands executed in this program";
+    private static final String COMMAND_HISTORY_DESC = "Show the the history of commands executed in this program.";
     private static final String COMMAND_HISTORY_EXAMPLE = COMMAND_HISTORY_WORD;
 
     private static final String DIVIDER = "===================================================";
@@ -1140,6 +1140,7 @@ public class AddressBook {
                 + getUsageInfoForDeleteCommand() + LS
                 + getUsageInfoForClearCommand() + LS
                 + getUsageInfoForExitCommand() + LS
+                + getUsageInfoForHistoryCommand() + LS
                 + getUsageInfoForHelpCommand();
     }
 
@@ -1184,14 +1185,20 @@ public class AddressBook {
 
     /** Returns string for showing 'help' command usage instruction */
     private static String getUsageInfoForHelpCommand() {
-        return String.format(MESSAGE_COMMAND_HELP, COMMAND_HELP_WORD, COMMAND_HELP_DESC)
-                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_HELP_EXAMPLE);
+        return String.format(MESSAGE_COMMAND_HELP, COMMAND_HELP_WORD, COMMAND_HELP_DESC) + LS
+                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_HELP_EXAMPLE) + LS;
+    }
+
+    /** Returns string for showing 'history' command usage instruction */
+    private static String getUsageInfoForHistoryCommand() {
+        return String.format(MESSAGE_COMMAND_HELP, COMMAND_HISTORY_WORD, COMMAND_HISTORY_DESC) + LS
+                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_HISTORY_EXAMPLE) + LS;
     }
 
     /** Returns the string for showing 'exit' command usage instruction */
     private static String getUsageInfoForExitCommand() {
-        return String.format(MESSAGE_COMMAND_HELP, COMMAND_EXIT_WORD, COMMAND_EXIT_DESC)
-                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_EXIT_EXAMPLE);
+        return String.format(MESSAGE_COMMAND_HELP, COMMAND_EXIT_WORD, COMMAND_EXIT_DESC) + LS
+                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_EXIT_EXAMPLE) + LS;
     }
 
 
