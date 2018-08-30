@@ -132,7 +132,7 @@ public class AddressBook {
 
     private static final String COMMAND_HISTORY_WORD = "history";
     private static final String COMMAND_HISTORY_DESC = "Show the the history of commands executed in this program";
-    private static final String COMMAND_HISTORY_EXAMPLE = COMMAND_SORT_WORD;
+    private static final String COMMAND_HISTORY_EXAMPLE = COMMAND_HISTORY_WORD;
 
     private static final String DIVIDER = "===================================================";
 
@@ -391,8 +391,8 @@ public class AddressBook {
                 return executeClearAddressBook();
             case COMMAND_HELP_WORD:
                 return getUsageInfoForAllCommands();
-//      case COMMAND_SORT_WORD:
-//          return executeSortAddressBookDisplay();
+            case COMMAND_SORT_WORD:
+                return executeSortAddressBookDisplay();
             case COMMAND_HISTORY_WORD:
                 return showHistoryCommands();
             case COMMAND_EXIT_WORD:
@@ -615,11 +615,18 @@ public class AddressBook {
         return getMessageForPersonsDisplayedSummary(toBeDisplayed);
     }
 
-//    private static String executeSortAddressBookDisplay(){
-//        ArrayList<String[]> toBeDisplayed = getAllPersonsInAddressBook();
-//        showToUser(toBeDisplayed);
-//        return getMessageForPersonsDisplayedSummary(toBeDisplayed);
-//    }
+    /**
+     * Displays all persons in the address book to the user;
+     * Before displaying, This function will sort based on the first character of the Name
+     *
+     * @return feedback display message for the operation result
+     */
+    private static String executeSortAddressBookDisplay(){
+        ArrayList<String[]> toBeDisplayed = getAllPersonsInAddressBook();
+        Collections.sort(toBeDisplayed, (String[] c1 , String[] c2) -> c1[0].compareToIgnoreCase(c2[0]) );
+        showToUser(toBeDisplayed);
+        return getMessageForPersonsDisplayedSummary(toBeDisplayed);
+    }
 
     /**
      * Requests to terminate the program.
@@ -804,7 +811,7 @@ public class AddressBook {
      */
     private static void savePersonsToFile(ArrayList<String[]> persons, String filePath) {
         final ArrayList<String> linesToWrite = encodePersonsToStrings(persons);
-        Collections.sort(linesToWrite);     // actually sorts the string before storing into the addressbook.txt
+        //Collections.sort(linesToWrite);     // actually sorts the string before storing into the addressbook.txt
         try {
             Files.write(Paths.get(storageFilePath), linesToWrite);
         } catch (IOException ioe) {
