@@ -679,12 +679,17 @@ public class AddressBook {
 
     /**
      * Shows a message to the user
+     * The showToUser method takes in an unknown number of string data
+     * then the function runs a for loop till the end of the input and print them all out line by line
      */
+    //If i  were to not use varargs, i need to take care of many printing methods.
+    //var args makes the code simpler and less cluttered for printing of message.
     private static void showToUser(String... message) {
         for (String m : message) {
             System.out.println(LINE_PREFIX + m);
         }
     }
+
 
     /**
      * Shows the list of persons to the user.
