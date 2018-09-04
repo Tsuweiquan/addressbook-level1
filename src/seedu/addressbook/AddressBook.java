@@ -417,16 +417,24 @@ public class AddressBook {
     }
 
     /**
-     * Prints out all commands/instructions user keyed in
+     * Call printHistoryLogs() to print
      *
      * @return A string to indicate end of Logs
      */
     private static String showHistoryCommands() {
-        System.out.println("--Start of Logs--");
-        for (int i = 0; i < historyLogs.size(); i++) {
-            System.out.println(historyLogs.get(i));
-        }
+
+        printHistoryLogs();
         return "--End of Logs--";
+    }
+
+    /**
+     * Prints out all commands/instructions user keyed in
+     */
+    private static void printHistoryLogs() {
+        System.out.println("|| --Start of Logs--");
+        for (int i = 0; i < historyLogs.size(); i++) {
+            System.out.println("|| " + historyLogs.get(i));
+        }
     }
 
 
